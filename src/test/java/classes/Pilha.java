@@ -9,7 +9,7 @@ public class Pilha {
 
     public void push(Livro livro){
         if (pilha.size() >= limite){
-            return;
+            throw new ArrayStoreException();
         }
         if (! livro.getTitulo().startsWith("A") && ! livro.getTitulo().startsWith("O")){
             return;
@@ -17,7 +17,9 @@ public class Pilha {
         pilha.add(livro);
     }
     public Livro pop(){
-        return pilha.get( pilha.size() - 1);
+        Livro removido = pilha.get(pilha.size() - 1);
+        pilha.remove(pilha.size() - 1);
+        return removido;
     }
     public int count(){
        return pilha.size();
